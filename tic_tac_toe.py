@@ -47,3 +47,44 @@ def nichaya(a):
             if j in "abcdefghi":
                 return False
     return True
+def new_game():
+    a = [["a", "b", "c"], ["d", "e", "f"], ["g", "h", "i"]]
+    n_kl = ""
+    for k in range(9):
+        view(a)
+        if k%2 == 0:
+            print ("Ход игрока #1 (X)")
+            n_kl = input("Введите имя клетки: ")
+            n_kl = name(n_kl, a)
+        else:
+            print ("Ход игрока #2 (O)")
+            n_kl = input("Введите имя клетки: ")
+            n_kl = name(n_kl, a)
+        a = tochka(n_kl, k, a)
+        if win(a):
+            if k%2 == 0:
+                print("Победил игрок #1 (X)!")
+                view(a)
+            else:
+                print("Победил игрок #2 (O)!")
+                view(a)
+            end = input("Хотите сыграть ещё раз? (да/любая другая клавиша): ")
+            if end == "да":
+                new_game()
+                break
+            else:
+                print("Игра окончена.")
+                break
+        elif nichaya(a):
+            print("Ничья!")
+            view(a)
+            end = input("Хотите сыграть ещё раз? (да/любая другая клавиша): ")
+            if end == "да":
+                new_game()
+                break
+            else:
+                print("Игра окончена.")
+                break
+        else:
+            continue
+new_game()
