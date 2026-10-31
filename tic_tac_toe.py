@@ -41,3 +41,9 @@ def win(a):
     if a[0][2] == a[1][1] == a[2][0]:
         return True
     return False
+def nichaya(a):
+    for i in a:
+        for j in i:
+            if j in "abcdefghi":
+                return False
+    return True
